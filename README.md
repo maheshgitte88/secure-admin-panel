@@ -6,7 +6,7 @@ This is a **Node.js** based **Admin Panel** that includes features like notifica
 - **Authentication & Security**
   - Admin login with token-based authentication.
   - LAN-restricted access with OTP & VPN validation for remote access.
-  - Unauthorized access logging with alerts via email & SMS.
+  - Unauthorized access logging with alerts via email & SMS For super Admin.
 - **Real-time Notifications**
   - For Super Admin if unauthorized access is attempted,
   - send an alert email/SMS to the super admin
@@ -14,7 +14,7 @@ This is a **Node.js** based **Admin Panel** that includes features like notifica
 - **Backend:** Node.js, Express.js, MongoDB
 - **Authentication:** JWT, OTP-based login
 - **Notifications:** Nodemailer & twilio
-- **Security:** VPN, OTP & LAN-based access control
+- **Security:** VPN, OTP, Static IP & LAN-based access control
 
 ## 🔧 Setup Instructions
 
