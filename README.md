@@ -51,21 +51,21 @@ Static IP , LAN Access , OTP & VPN
 POST
 ### Register Admin (Initial Admin User)
 - http://localhost:5000/api/auth/register
-📌 Endpoint: POST /api/auth/register
-🔹 Description: Creates a new admin user.
-📩 Body (JSON):
+- 📌 Endpoint: POST /api/auth/register
+- 🔹 Description: Creates a new admin user.
+-📩 Body (JSON):
 
-✅ Expected Response (201 Created):
+- ✅ Expected Response (201 Created):
 
-JSON
+- **JSON**
 {
   "message": "Admin registered successfully"
 }
 ﻿
 
 - **Body**
-raw (json)
-json
+- raw (json)
+
 {
   "email": "maheshgitte7788@gmail.com",
   "password": "Admin@123",
@@ -79,20 +79,20 @@ json
 POST
 ### Login as Admin
 - http://localhost:5000/api/auth/login
-📌 Endpoint: POST /api/auth/login
-🔹 Description: Logs in an admin and returns a JWT token.
-📩 Body (JSON):
+- 📌 Endpoint: POST /api/auth/login
+- 🔹 Description: Logs in an admin and returns a JWT token.
+- 📩 Body (JSON):
 
 ✅ Expected Response (200 OK):
 
-JSON
+- **JSON**
 {
   "token": "your_jwt_token_here"
 }
 ﻿
 - **Body**
-raw (json)
-json
+- raw (json)
+  
 {
   "email": "admin@example.com",
   "password": "Admin@123",
@@ -105,21 +105,21 @@ json
 POST
 ### Generate OTP for Remote Admin
 - http://localhost:5000/api/auth/generate-otp
-📌 Endpoint: POST /api/auth/generate-otp
-🔹 Description: Sends OTP to admin’s email for remote login.
-📩 Body (JSON):
+- 📌 Endpoint: POST /api/auth/generate-otp
+- 🔹 Description: Sends OTP to admin’s email for remote login.
+- 📩 Body (JSON):
 
 ✅ Expected Response (200 OK):
 
-JSON
+- **JSON**
 {
   "message": "OTP sent"
 }
 ﻿
 
 - **Body**
-raw (json)
-json
+- raw (json)
+  
 {
   "email": "admin@example.com"
 }
@@ -128,14 +128,14 @@ json
 
 POST
 ### Validate OTP for Remote Access
-http://localhost:5000/api/auth/validate-otp
-📌 Endpoint: POST /api/auth/validate-otp
-🔹 Description: Validates OTP and grants access.
-📩 Body (JSON):
+- http://localhost:5000/api/auth/validate-otp
+- 📌 Endpoint: POST /api/auth/validate-otp
+- 🔹 Description: Validates OTP and grants access.
+- 📩 Body (JSON):
 
 - ✅ Expected Response (200 OK):
 
-JSON
+- **JSON**
 {
   "token": "your_jwt_token_here"
 }
@@ -154,15 +154,16 @@ json
 GET
 ### Access Admin Panel (LAN, staticIP, OTP & VPI )
 - http://localhost:5000/admin
-📌 Endpoint: GET /admin
-🔹 Description: Access the secure admin panel. send otp if reuired, all login fasle & true save into db
-📩 Headers:
+- 📌 Endpoint: GET /admin
+- 🔹 Description: Access the secure admin panel. send otp if reuired, all login fasle & true save into db
+- 📩 Headers:
+  
 Authorization: Bearer your_jwt_token_here
 otp: "xyz123"
 
 - ✅ Expected Response (200 OK, LAN Only):EndFragment
 
-JSON
+- **JSON**
 {
   "message": "Welcome to the Secure Admin Panel",
   "admin": {
@@ -178,7 +179,7 @@ JSON
 ### 📌 Test unauthorized access attempts by using an IP outside 192.168.x.x or 10.x.x.x
 - ✅ Expected Log Entry in MongoDB (AccessLog Collection)
 
-JSON
+- **JSON**
 {
   "ip": "45.78.23.20",
   "success": false,
@@ -194,16 +195,21 @@ JSON
 ### 📌 Fail Login 5 Times
 - Response after 5th failed attempt (403 Forbidden):
 
-JSON
+- **JSON**
 {
   "message": "Account locked"
 }
 
 
-✅ Admin Gets Email Alert:  
+- ✅ Admin Gets Email Alert:  
 
 Subject: Account Locked
 Your account has been locked due to too many failed login attempts.
 
 ### Note
 - For Local Testing Need to un comment the code In **ipMiddleware.js**  
+- 
+  // Handle localhost for testing
+  //   if (userIP === "::1" || userIP === "127.0.0.1") {
+  //     return next();
+  //   }
